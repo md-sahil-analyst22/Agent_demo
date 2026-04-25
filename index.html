@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampurna Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #0B0E14;
+            --bg-surface: #12151C;
+            --bg-surface-hover: #1A1E28;
+            --border-color: #232836;
+            
+            --text-primary: #FFFFFF;
+            --text-secondary: #8B949E;
+            
+            --accent-neon: #D4FF00;
+            --accent-neon-dim: rgba(212, 255, 0, 0.1);
+            
+            /* Tag Colors */
+            --tag-purple: #A855F7;
+            --tag-purple-bg: rgba(168, 85, 247, 0.1);
+            --tag-cyan: #06B6D4;
+            --tag-cyan-bg: rgba(6, 182, 212, 0.1);
+            --tag-orange: #F97316;
+            --tag-orange-bg: rgba(249, 115, 22, 0.1);
+            --tag-blue: #3B82F6;
+            --tag-blue-bg: rgba(59, 130, 246, 0.1);
+            --tag-pink: #EC4899;
+            --tag-pink-bg: rgba(236, 72, 153, 0.1);
+            --tag-gray: #71717A;
+            --tag-gray-bg: rgba(113, 113, 122, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: #050608;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            color: #ff3366;
+            font-weight: 700;
+            font-size: 20px;
+            text-shadow: 0 0 10px rgba(255,51,102,0.5);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .company-name {
+            color: var(--accent-neon);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            margin-left: 16px;
+        }
+
+        .top-nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        .top-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-icon {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-neon);
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-primary.outline {
+            background-color: var(--accent-neon-dim);
+            color: var(--accent-neon);
+            border: 1px solid var(--accent-neon);
+        }
+
+        /* Layout Architecture: Two Column Grid */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            color: var(--accent-neon);
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* NEW: Dashboard Workspace Layout */
+        .dashboard-workspace {
+            display: grid;
+            grid-template-columns: 260px 1fr; /* Left Sidebar 260px, Right Area fills rest */
+            gap: 32px;
+            align-items: start;
+        }
+
+        /* Sidebar Filters (Replaces floating dropdown) */
+        .sidebar-filters {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .sidebar-title {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sidebar-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-item:hover {
+            background-color: var(--bg-surface-hover);
+            color: var(--text-primary);
+        }
+
+        .sidebar-item.active {
+            color: var(--accent-neon);
+            background-color: var(--accent-neon-dim);
+            font-weight: 500;
+        }
+
+        .check {
+            color: var(--accent-neon);
+        }
+
+        /* Toolbar */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .tab {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tabs {
+            display: flex;
+            background-color: var(--bg-surface);
+            border-radius: 8px;
+            padding: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tab {
+            border: none;
+            padding: 6px 12px;
+        }
+
+        .tab.active {
+            background-color: var(--bg-base);
+            color: var(--accent-neon);
+        }
+
+        .badge {
+            background-color: var(--border-color);
+            color: var(--text-secondary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+
+        .tab.active .badge {
+            color: var(--accent-neon);
+            background-color: var(--accent-neon-dim);
+        }
+
+        .toolbar-right {
+            display: flex;
+            gap: 12px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .view-toggles {
+            display: flex;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .toggle-btn.active {
+            background-color: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        /* Data Grid */
+        .data-grid {
+            border-top: 1px solid var(--border-color);
+        }
+
+        .grid-header, .grid-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.2fr 0.9fr 0.9fr 0.9fr 100px;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .grid-header {
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .agent-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Dynamic Icon Colors */
+        .icon-box.purple { background: var(--tag-purple-bg); border: 1px solid var(--tag-purple); }
+        .icon-box.cyan { background: var(--tag-cyan-bg); border: 1px solid var(--tag-cyan); }
+        .icon-box.orange { background: var(--tag-orange-bg); border: 1px solid var(--tag-orange); }
+        .icon-box.blue { background: var(--tag-blue-bg); border: 1px solid var(--tag-blue); }
+        .icon-box.pink { background: var(--tag-pink-bg); border: 1px solid var(--tag-pink); }
+        .icon-box.gray { background: var(--tag-gray-bg); border: 1px solid var(--tag-gray); }
+
+        .agent-info h4 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .agent-info p {
+            color: var(--text-secondary);
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Tags */
+        .tag {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            border: 1px solid;
+            display: inline-block;
+        }
+
+        .tag-purple { color: var(--tag-purple); border-color: var(--tag-purple); background: var(--tag-purple-bg); }
+        .tag-cyan { color: var(--tag-cyan); border-color: var(--tag-cyan); background: var(--tag-cyan-bg); }
+        .tag-orange { color: var(--tag-orange); border-color: var(--tag-orange); background: var(--tag-orange-bg); }
+        .tag-blue { color: var(--tag-blue); border-color: var(--tag-blue); background: var(--tag-blue-bg); }
+        .tag-pink { color: var(--tag-pink); border-color: var(--tag-pink); background: var(--tag-pink-bg); }
+        .tag-gray { color: var(--tag-gray); border-color: var(--tag-gray); background: var(--tag-gray-bg); }
+
+        /* Status */
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: inline-flex;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        .dot-green { background-color: var(--accent-neon); box-shadow: 0 0 5px var(--accent-neon); }
+        .dot-yellow { background-color: #EAB308; }
+        .dot-blue { background-color: var(--tag-blue); }
+
+        .runs strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .runs span {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .time {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--accent-neon);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .action-btn:hover {
+            background-color: var(--bg-surface);
+        }
+
+        /* Action Popup Menu */
+        .action-menu {
+            position: absolute;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            min-width: 140px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .action-menu.show {
+            display: flex;
+        }
+
+        .action-menu-item {
+            padding: 10px 16px;
+            color: var(--text-primary);
+            font-size: 13px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            text-align: left;
+            transition: background-color 0.2s ease;
+            width: 100%;
+        }
+
+        .action-menu-item:hover {
+            background-color: var(--bg-surface-hover);
+        }
+
+        .action-menu-item:first-child {
+            border-radius: 6px 6px 0 0;
+        }
+
+        .action-menu-item:last-child {
+            border-radius: 0 0 6px 6px;
+        }
+
+        .action-menu-item.delete {
+            color: #FF6B6B;
+        }
+
+        .actions {
+            position: relative;
+        }
+
+        /* Footer */
+        .pagination-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 24px;
+        }
+
+        .showing-text {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .pagination-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .page-btn {
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .page-btn.active {
+            border-color: var(--accent-neon);
+            color: var(--accent-neon);
+        }
+        
+        .text-right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo-section">
+            <div class="logo-icon">S</div>
+            <span class="logo-text">SAMPURNA</span>
+            <span class="company-name">SAMPURNA FINANCIAL SERVICES PRIVATE LIMITED</span>
+        </div>
+        <nav class="top-nav">
+            <a href="#">Pricing</a>
+            <a href="#">Docs <span>v</span></a>
+            <a href="#">Resources ></a>
+            <a href="#">Careers</a>
+            <a href="#">Enterprise</a>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-icon">⚙️ Settings</button>
+            <button class="btn-primary">Dashboard</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>Saved agents</h1>
+                <p>All your agents in one place. Run, edit, duplicate, or archive.</p>
+            </div>
+            <button class="btn-primary outline">+ New agent</button>
+        </header>
+
+        <div class="dashboard-workspace">
+            
+            <aside class="sidebar-filters">
+                <div class="sidebar-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Categories
+                </div>
+                <nav class="sidebar-menu">
+                    <a href="#" class="sidebar-item active">All Categories <span class="check">✓</span></a>
+                    <a href="#" class="sidebar-item">IT Agents</a>
+                    <a href="#" class="sidebar-item">HR Agents</a>
+                    <a href="#" class="sidebar-item">Finance Agents</a>
+                    <a href="#" class="sidebar-item">Sales Agents</a>
+                    <a href="#" class="sidebar-item">Marketing Agents</a>
+                    <a href="#" class="sidebar-item">Operations Agents</a>
+                    <a href="#" class="sidebar-item">Customer Support Agents</a>
+                    <a href="#" class="sidebar-item">Other Agents</a>
+                </nav>
+            </aside>
+
+            <section class="data-panel">
+                <div class="toolbar">
+                    <div class="tabs">
+                        <button class="tab active">All <span class="badge">12</span></button>
+                        <button class="tab">Active <span class="badge">8</span></button>
+                        <button class="tab">Paused <span class="badge">1</span></button>
+                        <button class="tab">Drafts <span class="badge">2</span></button>
+                        <button class="tab">Errors <span class="badge">1</span></button>
+                    </div>
+
+                    <div class="toolbar-right">
+                        <button class="filter-btn">v Last run</button>
+                        <div class="view-toggles">
+                            <button class="toggle-btn active">≡</button>
+                            <button class="toggle-btn">⊞</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-grid">
+                    <div class="grid-header">
+                        <div>AGENT</div>
+                        <div>CATEGORY</div>
+                        <div>TASK/WORK</div>
+                        <div>STATUS</div>
+                        <div>RUNS (30D)</div>
+                        <div>LAST RUN</div>
+                        <div class="text-right">ACTIONS</div>
+                    </div>
+
+                    <div class="grid-row">
+                        <div class="agent-info">
+                            <div class="icon-box purple">💻</div>
+                            <div>
+                                <h4>IT Support Agent</h4>
+                                <p>Handles IT tickets and system issues</p>
+                            </div>
+                        </div>
+                        <div><span class="tag tag-purple">IT Agents</span></div>
+                        <div><span class="tag tag-purple" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Technical support & troubleshooting</span></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs">
+                            <strong>124</strong>
+                            <span>98% success</span>
+                        </div>
+                        <div class="time">2 min ago</div>
+                        <div class="actions">
+                            <button class="action-btn">▶</button>
+                            <button class="action-btn menu-btn" data-menu="1">⋮</button>
+                            <div class="action-menu" id="menu-1">
+                                <button class="action-menu-item">Execute</button>
+                                <button class="action-menu-item">Modify</button>
+                                <button class="action-menu-item delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-row">
+                        <div class="agent-info">
+                            <div class="icon-box cyan">👥</div>
+                            <div>
+                                <h4>HR Onboarding Agent</h4>
+                                <p>Automates new employee onboarding</p>
+                            </div>
+                        </div>
+                        <div><span class="tag tag-cyan">HR Agents</span></div>
+                        <div><span class="tag tag-cyan" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Employee onboarding process</span></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs">
+                            <strong>89</strong>
+                            <span>100% success</span>
+                        </div>
+                        <div class="time">15 min ago</div>
+                        <div class="actions">
+                            <button class="action-btn">▶</button>
+                            <button class="action-btn menu-btn" data-menu="2">⋮</button>
+                            <div class="action-menu" id="menu-2">
+                                <button class="action-menu-item">Execute</button>
+                                <button class="action-menu-item">Modify</button>
+                                <button class="action-menu-item delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-row">
+                        <div class="agent-info">
+                            <div class="icon-box orange">💰</div>
+                            <div>
+                                <h4>Finance Report Agent</h4>
+                                <p>Generates financial reports</p>
+                            </div>
+                        </div>
+                        <div><span class="tag tag-orange">Finance Agents</span></div>
+                        <div><span class="tag tag-orange" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Financial reporting & analysis</span></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs">
+                            <strong>64</strong>
+                            <span>97% success</span>
+                        </div>
+                        <div class="time">1 hour ago</div>
+                        <div class="actions">
+                            <button class="action-btn">▶</button>
+                            <button class="action-btn menu-btn" data-menu="3">⋮</button>
+                            <div class="action-menu" id="menu-3">
+                                <button class="action-menu-item">Execute</button>
+                                <button class="action-menu-item">Modify</button>
+                                <button class="action-menu-item delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-row">
+                        <div class="agent-info">
+                            <div class="icon-box blue">📈</div>
+                            <div>
+                                <h4>Sales Follow-up Agent</h4>
+                                <p>Handles leads and follow-ups</p>
+                            </div>
+                        </div>
+                        <div><span class="tag tag-blue">Sales Agents</span></div>
+                        <div><span class="tag tag-blue" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Lead management & outreach</span></div>
+                        <div><span class="status"><span class="dot dot-yellow"></span> PAUSED</span></div>
+                        <div class="runs">
+                            <strong>32</strong>
+                            <span>96% success</span>
+                        </div>
+                        <div class="time">3 hours ago</div>
+                        <div class="actions">
+                            <button class="action-btn">▶</button>
+                            <button class="action-btn menu-btn" data-menu="4">⋮</button>
+                            <div class="action-menu" id="menu-4">
+                                <button class="action-menu-item">Execute</button>
+                                <button class="action-menu-item">Modify</button>
+                                <button class="action-menu-item delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-row">
+                        <div class="agent-info">
+                            <div class="icon-box pink">📢</div>
+                            <div>
+                                <h4>Marketing Campaign Agent</h4>
+                                <p>Manages and analyzes campaigns</p>
+                            </div>
+                        </div>
+                        <div><span class="tag tag-pink">Marketing Agents</span></div>
+                        <div><span class="tag tag-pink" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Campaign management & analytics</span></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs">
+                            <strong>76</strong>
+                            <span>99% success</span>
+                        </div>
+                        <div class="time">5 hours ago</div>
+                        <div class="actions">
+                            <button class="action-btn">▶</button>
+                            <button class="action-btn menu-btn" data-menu="5">⋮</button>
+                            <div class="action-menu" id="menu-5">
+                                <button class="action-menu-item">Execute</button>
+                                <button class="action-menu-item">Modify</button>
+                                <button class="action-menu-item delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-row">
+                        <div class="agent-info">
+                            <div class="icon-box cyan">🎧</div>
+                            <div>
+                                <h4>Customer Support Agent</h4>
+                                <p>Resolves customer queries</p>
+                            </div>
+                        </div>
+                        <div><span class="tag tag-cyan">Support Agents</span></div>
+                        <div><span class="tag tag-cyan" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Query resolution & support</span></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs">
+                            <strong>102</strong>
+                            <span>95% success</span>
+                        </div>
+                        <div class="time">1 day ago</div>
+                        <div class="actions">
+                            <button class="action-btn">▶</button>
+                            <button class="action-btn menu-btn" data-menu="6">⋮</button>
+                            <div class="action-menu" id="menu-6">
+                                <button class="action-menu-item">Execute</button>
+                                <button class="action-menu-item">Modify</button>
+                                <button class="action-menu-item delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-row">
+                        <div class="agent-info">
+                            <div class="icon-box gray">🔠</div>
+                            <div>
+                                <h4>Document Processing Agent</h4>
+                                <p>Extracts and processes documents</p>
+                            </div>
+                        </div>
+                        <div><span class="tag tag-gray">Other Agents</span></div>
+                        <div><span class="tag tag-gray" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Data extraction & processing</span></div>
+                        <div><span class="status"><span class="dot dot-blue"></span> DRAFT</span></div>
+                        <div class="runs">
+                            <strong>0</strong>
+                            <span>-</span>
+                        </div>
+                        <div class="time">-</div>
+                        <div class="actions">
+                            <button class="action-btn">✎</button>
+                            <button class="action-btn menu-btn" data-menu="7">⋮</button>
+                            <div class="action-menu" id="menu-7">
+                                <button class="action-menu-item">Execute</button>
+                                <button class="action-menu-item">Modify</button>
+                                <button class="action-menu-item delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <footer class="pagination-footer">
+                    <div class="showing-text">Showing 1 to 7 of 12 agents</div>
+                    <div class="pagination-controls">
+                        <button class="page-btn"><</button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">></button>
+                    </div>
+                </footer>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Category Filter Functionality
+        const sidebarItems = document.querySelectorAll('.sidebar-item');
+        const gridRows = document.querySelectorAll('.grid-row');
+
+        sidebarItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Update active state in sidebar
+                sidebarItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                // Get the category text (remove checkmark and whitespace)
+                let categoryText = item.innerText.replace('✓', '').trim();
+
+                // Filter rows based on category
+                gridRows.forEach(row => {
+                    // Find the category tag in the row (second column)
+                    const categoryTag = row.querySelector('span.tag');
+                    
+                    if (categoryText === 'All Categories') {
+                        // Show all rows
+                        row.style.display = 'grid';
+                    } else if (categoryTag) {
+                        const tagText = categoryTag.textContent.trim();
+                        // Show only matching category rows
+                        if (tagText === categoryText) {
+                            row.style.display = 'grid';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    } else {
+                        // Hide rows without category tag if filtering by specific category
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Action Menu Popup Functionality
+        const menuButtons = document.querySelectorAll('.menu-btn');
+
+        menuButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const menuId = btn.getAttribute('data-menu');
+                const menu = document.getElementById(`menu-${menuId}`);
+
+                // Close all other menus
+                document.querySelectorAll('.action-menu').forEach(m => {
+                    if (m !== menu) {
+                        m.classList.remove('show');
+                    }
+                });
+
+                // Toggle current menu
+                menu.classList.toggle('show');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.action-menu').forEach(menu => {
+                menu.classList.remove('show');
+            });
+        });
+
+        // Menu item click handlers
+        const menuItems = document.querySelectorAll('.action-menu-item');
+        menuItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const action = item.textContent.trim();
+                console.log(`Action: ${action}`);
+                // Close the menu after selection
+                item.closest('.action-menu').classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>

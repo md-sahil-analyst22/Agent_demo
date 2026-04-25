@@ -11,14 +11,10 @@
             --bg-surface: #12151C;
             --bg-surface-hover: #1A1E28;
             --border-color: #232836;
-            
             --text-primary: #FFFFFF;
             --text-secondary: #8B949E;
-            
             --accent-neon: #D4FF00;
             --accent-neon-dim: rgba(212, 255, 0, 0.1);
-            
-            /* Tag Colors */
             --tag-purple: #A855F7;
             --tag-purple-bg: rgba(168, 85, 247, 0.1);
             --tag-cyan: #06B6D4;
@@ -31,497 +27,110 @@
             --tag-pink-bg: rgba(236, 72, 153, 0.1);
             --tag-gray: #71717A;
             --tag-gray-bg: rgba(113, 113, 122, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', system-ui, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-base);
-            color: var(--text-primary);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Header */
-        .app-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--border-color);
-            background-color: #050608;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            color: #ff3366;
-            font-weight: 700;
-            font-size: 20px;
-            text-shadow: 0 0 10px rgba(255,51,102,0.5);
-        }
-
-        .logo-text {
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .company-name {
-            color: var(--accent-neon);
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            margin-left: 16px;
-        }
-
-        .top-nav {
-            display: flex;
-            gap: 24px;
-        }
-
-        .top-nav a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn-icon {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-neon);
-            color: #000;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .btn-primary.outline {
-            background-color: var(--accent-neon-dim);
-            color: var(--accent-neon);
-            border: 1px solid var(--accent-neon);
-        }
-
-        /* Layout Architecture: Two Column Grid */
-        .main-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 24px;
-        }
-
-        .page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 32px;
-        }
-
-        .page-header h1 {
-            font-size: 32px;
-            font-weight: 500;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-            color: var(--accent-neon);
-        }
-
-        .page-header p {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        /* NEW: Dashboard Workspace Layout */
-        .dashboard-workspace {
-            display: grid;
-            grid-template-columns: 260px 1fr; /* Left Sidebar 260px, Right Area fills rest */
-            gap: 32px;
-            align-items: start;
-        }
-
-        /* Sidebar Filters (Replaces floating dropdown) */
-        .sidebar-filters {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 16px;
-        }
-
-        .sidebar-title {
-            font-size: 12px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .sidebar-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .sidebar-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 12px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 13px;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .sidebar-item:hover {
-            background-color: var(--bg-surface-hover);
-            color: var(--text-primary);
-        }
-
-        .sidebar-item.active {
-            color: var(--accent-neon);
-            background-color: var(--accent-neon-dim);
-            font-weight: 500;
-        }
-
-        .check {
-            color: var(--accent-neon);
-        }
-
-        /* Toolbar */
-        .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .tab {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 13px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tabs {
-            display: flex;
-            background-color: var(--bg-surface);
-            border-radius: 8px;
-            padding: 4px;
-            border: 1px solid var(--border-color);
-        }
-
-        .tab {
-            border: none;
-            padding: 6px 12px;
-        }
-
-        .tab.active {
-            background-color: var(--bg-base);
-            color: var(--accent-neon);
-        }
-
-        .badge {
-            background-color: var(--border-color);
-            color: var(--text-secondary);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 11px;
-        }
-
-        .tab.active .badge {
-            color: var(--accent-neon);
-            background-color: var(--accent-neon-dim);
-        }
-
-        .toolbar-right {
-            display: flex;
-            gap: 12px;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 13px;
-            cursor: pointer;
-        }
-
-        .view-toggles {
-            display: flex;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            overflow: hidden;
-        }
-
-        .toggle-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            padding: 8px 12px;
-            cursor: pointer;
-        }
-
-        .toggle-btn.active {
-            background-color: var(--border-color);
-            color: var(--text-primary);
-        }
-
-        /* Data Grid */
-        .data-grid {
-            border-top: 1px solid var(--border-color);
-        }
-
-        .grid-header, .grid-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1.2fr 0.9fr 0.9fr 0.9fr 100px;
-            align-items: center;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .grid-header {
-            color: var(--text-secondary);
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .agent-info {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .icon-box {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        /* Dynamic Icon Colors */
-        .icon-box.purple { background: var(--tag-purple-bg); border: 1px solid var(--tag-purple); }
-        .icon-box.cyan { background: var(--tag-cyan-bg); border: 1px solid var(--tag-cyan); }
-        .icon-box.orange { background: var(--tag-orange-bg); border: 1px solid var(--tag-orange); }
-        .icon-box.blue { background: var(--tag-blue-bg); border: 1px solid var(--tag-blue); }
-        .icon-box.pink { background: var(--tag-pink-bg); border: 1px solid var(--tag-pink); }
-        .icon-box.gray { background: var(--tag-gray-bg); border: 1px solid var(--tag-gray); }
-
-        .agent-info h4 {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        .agent-info p {
-            color: var(--text-secondary);
-            font-size: 12px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* Tags */
-        .tag {
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 500;
-            border: 1px solid;
-            display: inline-block;
-        }
-
-        .tag-purple { color: var(--tag-purple); border-color: var(--tag-purple); background: var(--tag-purple-bg); }
-        .tag-cyan { color: var(--tag-cyan); border-color: var(--tag-cyan); background: var(--tag-cyan-bg); }
-        .tag-orange { color: var(--tag-orange); border-color: var(--tag-orange); background: var(--tag-orange-bg); }
-        .tag-blue { color: var(--tag-blue); border-color: var(--tag-blue); background: var(--tag-blue-bg); }
-        .tag-pink { color: var(--tag-pink); border-color: var(--tag-pink); background: var(--tag-pink-bg); }
-        .tag-gray { color: var(--tag-gray); border-color: var(--tag-gray); background: var(--tag-gray-bg); }
-
-        /* Status */
-        .status {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            display: inline-flex;
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-        }
-        .dot-green { background-color: var(--accent-neon); box-shadow: 0 0 5px var(--accent-neon); }
-        .dot-yellow { background-color: #EAB308; }
-        .dot-blue { background-color: var(--tag-blue); }
-
-        .runs strong {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        .runs span {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        .time {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        .actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 8px;
-        }
-
-        .action-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--accent-neon);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .action-btn:hover {
-            background-color: var(--bg-surface);
-        }
-
-        /* Action Popup Menu */
-        .action-menu {
-            position: absolute;
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            min-width: 140px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            display: none;
-            flex-direction: column;
-            z-index: 1000;
-        }
-
-        .action-menu.show {
-            display: flex;
-        }
-
-        .action-menu-item {
-            padding: 10px 16px;
-            color: var(--text-primary);
-            font-size: 13px;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            text-align: left;
-            transition: background-color 0.2s ease;
-            width: 100%;
-        }
-
-        .action-menu-item:hover {
-            background-color: var(--bg-surface-hover);
-        }
-
-        .action-menu-item:first-child {
-            border-radius: 6px 6px 0 0;
-        }
-
-        .action-menu-item:last-child {
-            border-radius: 0 0 6px 6px;
-        }
-
-        .action-menu-item.delete {
-            color: #FF6B6B;
-        }
-
-        .actions {
-            position: relative;
-        }
-
-        /* Footer */
-        .pagination-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 24px;
-        }
-
-        .showing-text {
-            color: var(--text-secondary);
-            font-size: 13px;
-        }
-
-        .pagination-controls {
-            display: flex;
-            gap: 8px;
-        }
-
-        .page-btn {
-            width: 32px;
-            height: 32px;
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .page-btn.active {
-            border-color: var(--accent-neon);
-            color: var(--accent-neon);
-        }
-        
-        .text-right {
-            text-align: right;
-        }
+            --tag-green: #22C55E;
+            --tag-green-bg: rgba(34, 197, 94, 0.1);
+            --tag-teal: #14B8A6;
+            --tag-teal-bg: rgba(20, 184, 166, 0.1);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',system-ui,sans-serif; }
+        body { background-color:var(--bg-base); color:var(--text-primary); -webkit-font-smoothing:antialiased; }
+
+        .app-header { display:flex; justify-content:space-between; align-items:center; padding:16px 24px; border-bottom:1px solid var(--border-color); background-color:#050608; }
+        .logo-section { display:flex; align-items:center; gap:12px; }
+        .logo-icon { color:#ff3366; font-weight:700; font-size:20px; text-shadow:0 0 10px rgba(255,51,102,0.5); }
+        .logo-text { font-weight:700; letter-spacing:1px; }
+        .company-name { color:var(--accent-neon); font-size:11px; font-weight:600; letter-spacing:1.5px; margin-left:16px; }
+        .top-nav { display:flex; gap:24px; }
+        .top-nav a { color:var(--text-primary); text-decoration:none; font-size:13px; font-weight:500; }
+        .header-actions { display:flex; gap:12px; }
+        .btn-icon { background:transparent; border:1px solid var(--border-color); color:var(--text-primary); padding:8px 16px; border-radius:6px; cursor:pointer; font-size:13px; }
+        .btn-primary { background-color:var(--accent-neon); color:#000; border:none; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; font-size:13px; }
+        .btn-primary.outline { background-color:var(--accent-neon-dim); color:var(--accent-neon); border:1px solid var(--accent-neon); }
+
+        .main-content { max-width:1400px; margin:0 auto; padding:40px 24px; }
+        .page-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:32px; }
+        .page-header h1 { font-size:32px; font-weight:500; margin-bottom:8px; letter-spacing:-0.5px; color:var(--accent-neon); }
+        .page-header p { color:var(--text-secondary); font-size:14px; }
+        .dashboard-workspace { display:grid; grid-template-columns:260px 1fr; gap:32px; align-items:start; }
+
+        .sidebar-filters { background-color:var(--bg-surface); border:1px solid var(--border-color); border-radius:8px; padding:16px; }
+        .sidebar-title { font-size:12px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+        .sidebar-menu { display:flex; flex-direction:column; gap:4px; }
+        .sidebar-item { display:flex; justify-content:space-between; align-items:center; padding:10px 12px; color:var(--text-secondary); text-decoration:none; font-size:13px; border-radius:6px; transition:all 0.2s ease; }
+        .sidebar-item:hover { background-color:var(--bg-surface-hover); color:var(--text-primary); }
+        .sidebar-item.active { color:var(--accent-neon); background-color:var(--accent-neon-dim); font-weight:500; }
+        .check { color:var(--accent-neon); }
+
+        .toolbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
+        .tabs { display:flex; background-color:var(--bg-surface); border-radius:8px; padding:4px; border:1px solid var(--border-color); }
+        .tab { background:transparent; border:none; color:var(--text-secondary); padding:6px 12px; border-radius:6px; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:8px; }
+        .tab.active { background-color:var(--bg-base); color:var(--accent-neon); }
+        .badge { background-color:var(--border-color); color:var(--text-secondary); padding:2px 6px; border-radius:4px; font-size:11px; }
+        .tab.active .badge { color:var(--accent-neon); background-color:var(--accent-neon-dim); }
+        .toolbar-right { display:flex; gap:12px; }
+        .filter-btn { background:transparent; border:1px solid var(--border-color); color:var(--text-secondary); padding:8px 16px; border-radius:6px; font-size:13px; cursor:pointer; }
+        .view-toggles { display:flex; border:1px solid var(--border-color); border-radius:6px; overflow:hidden; }
+        .toggle-btn { background:transparent; border:none; color:var(--text-secondary); padding:8px 12px; cursor:pointer; }
+        .toggle-btn.active { background-color:var(--border-color); color:var(--text-primary); }
+
+        /* DATA GRID — CATEGORY | TASK/WORK | AGENT | STATUS | RUNS | LAST RUN | ACTIONS */
+        .data-grid { border-top:1px solid var(--border-color); }
+        .grid-header,.grid-row { display:grid; grid-template-columns:minmax(120px,1.1fr) minmax(150px,1.3fr) minmax(200px,2fr) 100px 110px 95px 80px; align-items:center; padding:14px 0; border-bottom:1px solid var(--border-color); gap:12px; }
+        .grid-header { color:var(--text-secondary); font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; }
+
+        .agent-info { display:flex; align-items:center; gap:12px; min-width:0; }
+        .agent-text { min-width:0; overflow:hidden; }
+        .icon-box { width:38px; height:38px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+        .icon-box.purple { background:var(--tag-purple-bg); border:1px solid var(--tag-purple); }
+        .icon-box.cyan { background:var(--tag-cyan-bg); border:1px solid var(--tag-cyan); }
+        .icon-box.orange { background:var(--tag-orange-bg); border:1px solid var(--tag-orange); }
+        .icon-box.blue { background:var(--tag-blue-bg); border:1px solid var(--tag-blue); }
+        .icon-box.pink { background:var(--tag-pink-bg); border:1px solid var(--tag-pink); }
+        .icon-box.gray { background:var(--tag-gray-bg); border:1px solid var(--tag-gray); }
+        .icon-box.green { background:var(--tag-green-bg); border:1px solid var(--tag-green); }
+        .icon-box.teal { background:var(--tag-teal-bg); border:1px solid var(--tag-teal); }
+        .agent-info h4 { font-size:13px; font-weight:500; margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .agent-info p { color:var(--text-secondary); font-size:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+        .tag { padding:4px 10px; border-radius:12px; font-size:11px; font-weight:500; border:1px solid; display:inline-block; white-space:nowrap; }
+        .tag-purple { color:var(--tag-purple); border-color:var(--tag-purple); background:var(--tag-purple-bg); }
+        .tag-cyan { color:var(--tag-cyan); border-color:var(--tag-cyan); background:var(--tag-cyan-bg); }
+        .tag-orange { color:var(--tag-orange); border-color:var(--tag-orange); background:var(--tag-orange-bg); }
+        .tag-blue { color:var(--tag-blue); border-color:var(--tag-blue); background:var(--tag-blue-bg); }
+        .tag-pink { color:var(--tag-pink); border-color:var(--tag-pink); background:var(--tag-pink-bg); }
+        .tag-gray { color:var(--tag-gray); border-color:var(--tag-gray); background:var(--tag-gray-bg); }
+        .tag-green { color:var(--tag-green); border-color:var(--tag-green); background:var(--tag-green-bg); }
+        .tag-teal { color:var(--tag-teal); border-color:var(--tag-teal); background:var(--tag-teal-bg); }
+        .subtask { font-size:12px; color:var(--text-secondary); line-height:1.4; }
+
+        .status { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; padding:4px 10px; border-radius:12px; border:1px solid var(--border-color); white-space:nowrap; }
+        .dot { width:6px; height:6px; border-radius:50%; }
+        .dot-green { background-color:var(--accent-neon); box-shadow:0 0 5px var(--accent-neon); }
+        .dot-yellow { background-color:#EAB308; }
+        .dot-blue { background-color:var(--tag-blue); }
+        .dot-red { background-color:#EF4444; }
+
+        .runs strong { display:block; font-size:14px; font-weight:600; }
+        .runs span { font-size:11px; color:var(--text-secondary); }
+        .time { font-size:12px; color:var(--text-secondary); white-space:nowrap; }
+        .actions { display:flex; justify-content:flex-end; gap:6px; position:relative; }
+        .action-btn { width:30px; height:30px; border-radius:6px; background-color:transparent; border:1px solid var(--border-color); color:var(--accent-neon); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:13px; }
+        .action-btn:hover { background-color:var(--bg-surface); }
+
+        .action-menu { position:absolute; top:100%; right:0; margin-top:4px; background-color:var(--bg-surface); border:1px solid var(--border-color); border-radius:6px; min-width:140px; box-shadow:0 4px 12px rgba(0,0,0,0.3); display:none; flex-direction:column; z-index:1000; }
+        .action-menu.show { display:flex; }
+        .action-menu-item { padding:10px 16px; color:var(--text-primary); font-size:13px; cursor:pointer; border:none; background:transparent; text-align:left; transition:background-color 0.2s ease; width:100%; }
+        .action-menu-item:hover { background-color:var(--bg-surface-hover); }
+        .action-menu-item:first-child { border-radius:6px 6px 0 0; }
+        .action-menu-item:last-child { border-radius:0 0 6px 6px; }
+        .action-menu-item.delete { color:#FF6B6B; }
+
+        .pagination-footer { display:flex; justify-content:space-between; align-items:center; margin-top:24px; }
+        .showing-text { color:var(--text-secondary); font-size:13px; }
+        .pagination-controls { display:flex; gap:8px; }
+        .page-btn { width:32px; height:32px; background:transparent; border:1px solid var(--border-color); color:var(--text-secondary); border-radius:6px; cursor:pointer; }
+        .page-btn.active { border-color:var(--accent-neon); color:var(--accent-neon); }
+        .text-right { text-align:right; }
     </style>
 </head>
 <body>
@@ -554,7 +163,6 @@
         </header>
 
         <div class="dashboard-workspace">
-            
             <aside class="sidebar-filters">
                 <div class="sidebar-title">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -576,13 +184,12 @@
             <section class="data-panel">
                 <div class="toolbar">
                     <div class="tabs">
-                        <button class="tab active">All <span class="badge">12</span></button>
-                        <button class="tab">Active <span class="badge">8</span></button>
-                        <button class="tab">Paused <span class="badge">1</span></button>
-                        <button class="tab">Drafts <span class="badge">2</span></button>
-                        <button class="tab">Errors <span class="badge">1</span></button>
+                        <button class="tab active">All <span class="badge">40</span></button>
+                        <button class="tab">Active <span class="badge">26</span></button>
+                        <button class="tab">Paused <span class="badge">6</span></button>
+                        <button class="tab">Drafts <span class="badge">5</span></button>
+                        <button class="tab">Errors <span class="badge">3</span></button>
                     </div>
-
                     <div class="toolbar-right">
                         <button class="filter-btn">v Last run</button>
                         <div class="view-toggles">
@@ -594,212 +201,398 @@
 
                 <div class="data-grid">
                     <div class="grid-header">
-                        <div>AGENT</div>
                         <div>CATEGORY</div>
                         <div>TASK/WORK</div>
+                        <div>AGENT</div>
                         <div>STATUS</div>
                         <div>RUNS (30D)</div>
                         <div>LAST RUN</div>
                         <div class="text-right">ACTIONS</div>
                     </div>
 
+                    <!-- ══════ CUSTOMER SUPPORT AGENTS ══════ -->
                     <div class="grid-row">
-                        <div class="agent-info">
-                            <div class="icon-box purple">💻</div>
-                            <div>
-                                <h4>IT Support Agent</h4>
-                                <p>Handles IT tickets and system issues</p>
-                            </div>
-                        </div>
-                        <div><span class="tag tag-purple">IT Agents</span></div>
-                        <div><span class="tag tag-purple" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Technical support & troubleshooting</span></div>
+                        <div><span class="tag tag-teal">Customer Support Agents</span></div>
+                        <div class="subtask">Complaint management</div>
+                        <div class="agent-info"><div class="icon-box teal">📩</div><div class="agent-text"><h4>Escalation Handler Agent</h4><p>Routes complex issues to specialists</p></div></div>
                         <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
-                        <div class="runs">
-                            <strong>124</strong>
-                            <span>98% success</span>
-                        </div>
-                        <div class="time">2 min ago</div>
-                        <div class="actions">
-                            <button class="action-btn">▶</button>
-                            <button class="action-btn menu-btn" data-menu="1">⋮</button>
-                            <div class="action-menu" id="menu-1">
-                                <button class="action-menu-item">Execute</button>
-                                <button class="action-menu-item">Modify</button>
-                                <button class="action-menu-item delete">Delete</button>
-                            </div>
-                        </div>
+                        <div class="runs"><strong>67</strong><span>94% success</span></div>
+                        <div class="time">30 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="1">⋮</button><div class="action-menu" id="menu-1"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
                     </div>
-
                     <div class="grid-row">
-                        <div class="agent-info">
-                            <div class="icon-box cyan">👥</div>
-                            <div>
-                                <h4>HR Onboarding Agent</h4>
-                                <p>Automates new employee onboarding</p>
-                            </div>
-                        </div>
-                        <div><span class="tag tag-cyan">HR Agents</span></div>
-                        <div><span class="tag tag-cyan" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Employee onboarding process</span></div>
+                        <div><span class="tag tag-teal">Customer Support Agents</span></div>
+                        <div class="subtask">Complaint management</div>
+                        <div class="agent-info"><div class="icon-box teal">📋</div><div class="agent-text"><h4>Feedback Collector Agent</h4><p>Gathers and categorizes feedback</p></div></div>
                         <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
-                        <div class="runs">
-                            <strong>89</strong>
-                            <span>100% success</span>
-                        </div>
-                        <div class="time">15 min ago</div>
-                        <div class="actions">
-                            <button class="action-btn">▶</button>
-                            <button class="action-btn menu-btn" data-menu="2">⋮</button>
-                            <div class="action-menu" id="menu-2">
-                                <button class="action-menu-item">Execute</button>
-                                <button class="action-menu-item">Modify</button>
-                                <button class="action-menu-item delete">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid-row">
-                        <div class="agent-info">
-                            <div class="icon-box orange">💰</div>
-                            <div>
-                                <h4>Finance Report Agent</h4>
-                                <p>Generates financial reports</p>
-                            </div>
-                        </div>
-                        <div><span class="tag tag-orange">Finance Agents</span></div>
-                        <div><span class="tag tag-orange" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Financial reporting & analysis</span></div>
-                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
-                        <div class="runs">
-                            <strong>64</strong>
-                            <span>97% success</span>
-                        </div>
+                        <div class="runs"><strong>112</strong><span>99% success</span></div>
                         <div class="time">1 hour ago</div>
-                        <div class="actions">
-                            <button class="action-btn">▶</button>
-                            <button class="action-btn menu-btn" data-menu="3">⋮</button>
-                            <div class="action-menu" id="menu-3">
-                                <button class="action-menu-item">Execute</button>
-                                <button class="action-menu-item">Modify</button>
-                                <button class="action-menu-item delete">Delete</button>
-                            </div>
-                        </div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="2">⋮</button><div class="action-menu" id="menu-2"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
                     </div>
-
                     <div class="grid-row">
-                        <div class="agent-info">
-                            <div class="icon-box blue">📈</div>
-                            <div>
-                                <h4>Sales Follow-up Agent</h4>
-                                <p>Handles leads and follow-ups</p>
-                            </div>
-                        </div>
-                        <div><span class="tag tag-blue">Sales Agents</span></div>
-                        <div><span class="tag tag-blue" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Lead management & outreach</span></div>
+                        <div><span class="tag tag-teal">Customer Support Agents</span></div>
+                        <div class="subtask">Query resolution & support</div>
+                        <div class="agent-info"><div class="icon-box teal">💬</div><div class="agent-text"><h4>Chat Support Agent</h4><p>Handles live chat customer queries</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>204</strong><span>96% success</span></div>
+                        <div class="time">1 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="3">⋮</button><div class="action-menu" id="menu-3"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-teal">Customer Support Agents</span></div>
+                        <div class="subtask">Query resolution & support</div>
+                        <div class="agent-info"><div class="icon-box teal">🎧</div><div class="agent-text"><h4>Ticket Resolution Agent</h4><p>Resolves customer support tickets</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>156</strong><span>95% success</span></div>
+                        <div class="time">5 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="4">⋮</button><div class="action-menu" id="menu-4"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-teal">Customer Support Agents</span></div>
+                        <div class="subtask">Service quality & SLA tracking</div>
+                        <div class="agent-info"><div class="icon-box teal">⏱️</div><div class="agent-text"><h4>SLA Monitor Agent</h4><p>Tracks SLA compliance and alerts</p></div></div>
                         <div><span class="status"><span class="dot dot-yellow"></span> PAUSED</span></div>
-                        <div class="runs">
-                            <strong>32</strong>
-                            <span>96% success</span>
-                        </div>
-                        <div class="time">3 hours ago</div>
-                        <div class="actions">
-                            <button class="action-btn">▶</button>
-                            <button class="action-btn menu-btn" data-menu="4">⋮</button>
-                            <div class="action-menu" id="menu-4">
-                                <button class="action-menu-item">Execute</button>
-                                <button class="action-menu-item">Modify</button>
-                                <button class="action-menu-item delete">Delete</button>
-                            </div>
-                        </div>
+                        <div class="runs"><strong>38</strong><span>100% success</span></div>
+                        <div class="time">2 days ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="5">⋮</button><div class="action-menu" id="menu-5"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
                     </div>
 
+                    <!-- ══════ FINANCE AGENTS ══════ -->
                     <div class="grid-row">
-                        <div class="agent-info">
-                            <div class="icon-box pink">📢</div>
-                            <div>
-                                <h4>Marketing Campaign Agent</h4>
-                                <p>Manages and analyzes campaigns</p>
-                            </div>
-                        </div>
-                        <div><span class="tag tag-pink">Marketing Agents</span></div>
-                        <div><span class="tag tag-pink" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Campaign management & analytics</span></div>
+                        <div><span class="tag tag-orange">Finance Agents</span></div>
+                        <div class="subtask">Accounts payable & receivable</div>
+                        <div class="agent-info"><div class="icon-box orange">🔍</div><div class="agent-text"><h4>Expense Audit Agent</h4><p>Audits expense claims for compliance</p></div></div>
                         <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
-                        <div class="runs">
-                            <strong>76</strong>
-                            <span>99% success</span>
-                        </div>
-                        <div class="time">5 hours ago</div>
-                        <div class="actions">
-                            <button class="action-btn">▶</button>
-                            <button class="action-btn menu-btn" data-menu="5">⋮</button>
-                            <div class="action-menu" id="menu-5">
-                                <button class="action-menu-item">Execute</button>
-                                <button class="action-menu-item">Modify</button>
-                                <button class="action-menu-item delete">Delete</button>
-                            </div>
-                        </div>
+                        <div class="runs"><strong>43</strong><span>98% success</span></div>
+                        <div class="time">4 hours ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="6">⋮</button><div class="action-menu" id="menu-6"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
                     </div>
-
                     <div class="grid-row">
-                        <div class="agent-info">
-                            <div class="icon-box cyan">🎧</div>
-                            <div>
-                                <h4>Customer Support Agent</h4>
-                                <p>Resolves customer queries</p>
-                            </div>
-                        </div>
-                        <div><span class="tag tag-cyan">Support Agents</span></div>
-                        <div><span class="tag tag-cyan" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Query resolution & support</span></div>
+                        <div><span class="tag tag-orange">Finance Agents</span></div>
+                        <div class="subtask">Accounts payable & receivable</div>
+                        <div class="agent-info"><div class="icon-box orange">🧾</div><div class="agent-text"><h4>Invoice Processing Agent</h4><p>Processes and validates invoices</p></div></div>
                         <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
-                        <div class="runs">
-                            <strong>102</strong>
-                            <span>95% success</span>
-                        </div>
-                        <div class="time">1 day ago</div>
-                        <div class="actions">
-                            <button class="action-btn">▶</button>
-                            <button class="action-btn menu-btn" data-menu="6">⋮</button>
-                            <div class="action-menu" id="menu-6">
-                                <button class="action-menu-item">Execute</button>
-                                <button class="action-menu-item">Modify</button>
-                                <button class="action-menu-item delete">Delete</button>
-                            </div>
-                        </div>
+                        <div class="runs"><strong>87</strong><span>99% success</span></div>
+                        <div class="time">20 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="7">⋮</button><div class="action-menu" id="menu-7"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
                     </div>
-
                     <div class="grid-row">
-                        <div class="agent-info">
-                            <div class="icon-box gray">🔠</div>
-                            <div>
-                                <h4>Document Processing Agent</h4>
-                                <p>Extracts and processes documents</p>
-                            </div>
-                        </div>
-                        <div><span class="tag tag-gray">Other Agents</span></div>
-                        <div><span class="tag tag-gray" style="background: transparent; color: var(--text-secondary); border: none; padding: 0; font-size: 12px;">Data extraction & processing</span></div>
+                        <div><span class="tag tag-orange">Finance Agents</span></div>
+                        <div class="subtask">Financial reporting & analysis</div>
+                        <div class="agent-info"><div class="icon-box orange">📊</div><div class="agent-text"><h4>Budget Forecast Agent</h4><p>Forecasts quarterly budgets</p></div></div>
+                        <div><span class="status"><span class="dot dot-yellow"></span> PAUSED</span></div>
+                        <div class="runs"><strong>21</strong><span>95% success</span></div>
+                        <div class="time">3 days ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="8">⋮</button><div class="action-menu" id="menu-8"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-orange">Finance Agents</span></div>
+                        <div class="subtask">Financial reporting & analysis</div>
+                        <div class="agent-info"><div class="icon-box orange">💰</div><div class="agent-text"><h4>Finance Report Agent</h4><p>Generates financial reports</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>64</strong><span>97% success</span></div>
+                        <div class="time">1 hour ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="9">⋮</button><div class="action-menu" id="menu-9"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-orange">Finance Agents</span></div>
+                        <div class="subtask">Regulatory compliance</div>
+                        <div class="agent-info"><div class="icon-box orange">📜</div><div class="agent-text"><h4>Tax Compliance Agent</h4><p>Ensures GST/TDS regulatory compliance</p></div></div>
                         <div><span class="status"><span class="dot dot-blue"></span> DRAFT</span></div>
-                        <div class="runs">
-                            <strong>0</strong>
-                            <span>-</span>
-                        </div>
+                        <div class="runs"><strong>0</strong><span>-</span></div>
                         <div class="time">-</div>
-                        <div class="actions">
-                            <button class="action-btn">✎</button>
-                            <button class="action-btn menu-btn" data-menu="7">⋮</button>
-                            <div class="action-menu" id="menu-7">
-                                <button class="action-menu-item">Execute</button>
-                                <button class="action-menu-item">Modify</button>
-                                <button class="action-menu-item delete">Delete</button>
-                            </div>
-                        </div>
+                        <div class="actions"><button class="action-btn">✎</button><button class="action-btn menu-btn" data-menu="10">⋮</button><div class="action-menu" id="menu-10"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+
+                    <!-- ══════ HR AGENTS ══════ -->
+                    <div class="grid-row">
+                        <div><span class="tag tag-cyan">HR Agents</span></div>
+                        <div class="subtask">Attendance & leave tracking</div>
+                        <div class="agent-info"><div class="icon-box cyan">📅</div><div class="agent-text"><h4>Leave Management Agent</h4><p>Manages leave requests and balances</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>145</strong><span>100% success</span></div>
+                        <div class="time">10 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="11">⋮</button><div class="action-menu" id="menu-11"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-cyan">HR Agents</span></div>
+                        <div class="subtask">Attendance & leave tracking</div>
+                        <div class="agent-info"><div class="icon-box cyan">💵</div><div class="agent-text"><h4>Payroll Processing Agent</h4><p>Computes salary, deductions, payslips</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>60</strong><span>100% success</span></div>
+                        <div class="time">1 day ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="12">⋮</button><div class="action-menu" id="menu-12"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-cyan">HR Agents</span></div>
+                        <div class="subtask">Employee onboarding process</div>
+                        <div class="agent-info"><div class="icon-box cyan">📝</div><div class="agent-text"><h4>HR Document Verify Agent</h4><p>Verifies Aadhaar, PAN, and KYC docs</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>73</strong><span>97% success</span></div>
+                        <div class="time">25 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="13">⋮</button><div class="action-menu" id="menu-13"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-cyan">HR Agents</span></div>
+                        <div class="subtask">Employee onboarding process</div>
+                        <div class="agent-info"><div class="icon-box cyan">👥</div><div class="agent-text"><h4>HR Onboarding Agent</h4><p>Automates new employee onboarding</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>89</strong><span>100% success</span></div>
+                        <div class="time">15 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="14">⋮</button><div class="action-menu" id="menu-14"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-cyan">HR Agents</span></div>
+                        <div class="subtask">Hiring & recruitment</div>
+                        <div class="agent-info"><div class="icon-box cyan">🎯</div><div class="agent-text"><h4>Recruitment Screening Agent</h4><p>Screens resumes and shortlists</p></div></div>
+                        <div><span class="status"><span class="dot dot-red"></span> ERROR</span></div>
+                        <div class="runs"><strong>34</strong><span>88% success</span></div>
+                        <div class="time">6 hours ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="15">⋮</button><div class="action-menu" id="menu-15"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+
+                    <!-- ══════ IT AGENTS ══════ -->
+                    <div class="grid-row">
+                        <div><span class="tag tag-purple">IT Agents</span></div>
+                        <div class="subtask">Asset management & inventory</div>
+                        <div class="agent-info"><div class="icon-box purple">🏷️</div><div class="agent-text"><h4>IT Asset Tracker Agent</h4><p>Tracks hardware and software assets</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>51</strong><span>100% success</span></div>
+                        <div class="time">2 hours ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="16">⋮</button><div class="action-menu" id="menu-16"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-purple">IT Agents</span></div>
+                        <div class="subtask">Infrastructure monitoring</div>
+                        <div class="agent-info"><div class="icon-box purple">🔧</div><div class="agent-text"><h4>Patch Management Agent</h4><p>Schedules and deploys system patches</p></div></div>
+                        <div><span class="status"><span class="dot dot-yellow"></span> PAUSED</span></div>
+                        <div class="runs"><strong>18</strong><span>100% success</span></div>
+                        <div class="time">5 days ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="17">⋮</button><div class="action-menu" id="menu-17"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-purple">IT Agents</span></div>
+                        <div class="subtask">Infrastructure monitoring</div>
+                        <div class="agent-info"><div class="icon-box purple">🖥️</div><div class="agent-text"><h4>Server Health Agent</h4><p>Monitors server uptime & performance</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>310</strong><span>99% success</span></div>
+                        <div class="time">Just now</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="18">⋮</button><div class="action-menu" id="menu-18"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-purple">IT Agents</span></div>
+                        <div class="subtask">Technical support & troubleshooting</div>
+                        <div class="agent-info"><div class="icon-box purple">💻</div><div class="agent-text"><h4>IT Support Agent</h4><p>Handles IT tickets and system issues</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>124</strong><span>98% success</span></div>
+                        <div class="time">2 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="19">⋮</button><div class="action-menu" id="menu-19"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-purple">IT Agents</span></div>
+                        <div class="subtask">Technical support & troubleshooting</div>
+                        <div class="agent-info"><div class="icon-box purple">🌐</div><div class="agent-text"><h4>Network Monitor Agent</h4><p>Monitors network health and latency</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>198</strong><span>97% success</span></div>
+                        <div class="time">Just now</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="20">⋮</button><div class="action-menu" id="menu-20"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+
+                    <!-- ══════ MARKETING AGENTS ══════ -->
+                    <div class="grid-row">
+                        <div><span class="tag tag-pink">Marketing Agents</span></div>
+                        <div class="subtask">Campaign management & analytics</div>
+                        <div class="agent-info"><div class="icon-box pink">📢</div><div class="agent-text"><h4>Marketing Campaign Agent</h4><p>Manages and analyzes campaigns</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>76</strong><span>99% success</span></div>
+                        <div class="time">5 hours ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="21">⋮</button><div class="action-menu" id="menu-21"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-pink">Marketing Agents</span></div>
+                        <div class="subtask">Campaign management & analytics</div>
+                        <div class="agent-info"><div class="icon-box pink">📱</div><div class="agent-text"><h4>Social Media Agent</h4><p>Schedules posts and tracks engagement</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>92</strong><span>98% success</span></div>
+                        <div class="time">45 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="22">⋮</button><div class="action-menu" id="menu-22"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-pink">Marketing Agents</span></div>
+                        <div class="subtask">Content & engagement</div>
+                        <div class="agent-info"><div class="icon-box pink">📧</div><div class="agent-text"><h4>Email Marketing Agent</h4><p>Designs and sends email campaigns</p></div></div>
+                        <div><span class="status"><span class="dot dot-yellow"></span> PAUSED</span></div>
+                        <div class="runs"><strong>55</strong><span>96% success</span></div>
+                        <div class="time">2 days ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="23">⋮</button><div class="action-menu" id="menu-23"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-pink">Marketing Agents</span></div>
+                        <div class="subtask">Content & engagement</div>
+                        <div class="agent-info"><div class="icon-box pink">🔎</div><div class="agent-text"><h4>SEO Audit Agent</h4><p>Audits pages for SEO performance</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>41</strong><span>100% success</span></div>
+                        <div class="time">8 hours ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="24">⋮</button><div class="action-menu" id="menu-24"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-pink">Marketing Agents</span></div>
+                        <div class="subtask">Market research & insights</div>
+                        <div class="agent-info"><div class="icon-box pink">📡</div><div class="agent-text"><h4>Brand Monitor Agent</h4><p>Tracks brand mentions and sentiment</p></div></div>
+                        <div><span class="status"><span class="dot dot-blue"></span> DRAFT</span></div>
+                        <div class="runs"><strong>0</strong><span>-</span></div>
+                        <div class="time">-</div>
+                        <div class="actions"><button class="action-btn">✎</button><button class="action-btn menu-btn" data-menu="25">⋮</button><div class="action-menu" id="menu-25"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+
+                    <!-- ══════ OPERATIONS AGENTS ══════ -->
+                    <div class="grid-row">
+                        <div><span class="tag tag-green">Operations Agents</span></div>
+                        <div class="subtask">Logistics & scheduling</div>
+                        <div class="agent-info"><div class="icon-box green">🚚</div><div class="agent-text"><h4>Dispatch Scheduler Agent</h4><p>Optimizes delivery routes & schedules</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>83</strong><span>96% success</span></div>
+                        <div class="time">35 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="26">⋮</button><div class="action-menu" id="menu-26"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-green">Operations Agents</span></div>
+                        <div class="subtask">Procurement & vendor ops</div>
+                        <div class="agent-info"><div class="icon-box green">✅</div><div class="agent-text"><h4>Quality Check Agent</h4><p>Runs quality checks on deliverables</p></div></div>
+                        <div><span class="status"><span class="dot dot-red"></span> ERROR</span></div>
+                        <div class="runs"><strong>29</strong><span>86% success</span></div>
+                        <div class="time">12 hours ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="27">⋮</button><div class="action-menu" id="menu-27"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-green">Operations Agents</span></div>
+                        <div class="subtask">Procurement & vendor ops</div>
+                        <div class="agent-info"><div class="icon-box green">🤝</div><div class="agent-text"><h4>Vendor Management Agent</h4><p>Manages vendor contracts & renewals</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>47</strong><span>98% success</span></div>
+                        <div class="time">3 hours ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="28">⋮</button><div class="action-menu" id="menu-28"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-green">Operations Agents</span></div>
+                        <div class="subtask">Stock & supply chain</div>
+                        <div class="agent-info"><div class="icon-box green">📦</div><div class="agent-text"><h4>Inventory Manager Agent</h4><p>Tracks stock levels and reorder points</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>135</strong><span>99% success</span></div>
+                        <div class="time">8 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="29">⋮</button><div class="action-menu" id="menu-29"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-green">Operations Agents</span></div>
+                        <div class="subtask">Stock & supply chain</div>
+                        <div class="agent-info"><div class="icon-box green">🏭</div><div class="agent-text"><h4>Warehouse Tracker Agent</h4><p>Monitors warehouse operations</p></div></div>
+                        <div><span class="status"><span class="dot dot-yellow"></span> PAUSED</span></div>
+                        <div class="runs"><strong>22</strong><span>95% success</span></div>
+                        <div class="time">4 days ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="30">⋮</button><div class="action-menu" id="menu-30"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+
+                    <!-- ══════ SALES AGENTS ══════ -->
+                    <div class="grid-row">
+                        <div><span class="tag tag-blue">Sales Agents</span></div>
+                        <div class="subtask">Deal tracking & forecasting</div>
+                        <div class="agent-info"><div class="icon-box blue">📋</div><div class="agent-text"><h4>Pipeline Tracker Agent</h4><p>Tracks deals across sales pipeline</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>78</strong><span>97% success</span></div>
+                        <div class="time">50 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="31">⋮</button><div class="action-menu" id="menu-31"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-blue">Sales Agents</span></div>
+                        <div class="subtask">Deal tracking & forecasting</div>
+                        <div class="agent-info"><div class="icon-box blue">💲</div><div class="agent-text"><h4>Quote Generator Agent</h4><p>Auto-generates client proposals</p></div></div>
+                        <div><span class="status"><span class="dot dot-blue"></span> DRAFT</span></div>
+                        <div class="runs"><strong>0</strong><span>-</span></div>
+                        <div class="time">-</div>
+                        <div class="actions"><button class="action-btn">✎</button><button class="action-btn menu-btn" data-menu="32">⋮</button><div class="action-menu" id="menu-32"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-blue">Sales Agents</span></div>
+                        <div class="subtask">Lead management & outreach</div>
+                        <div class="agent-info"><div class="icon-box blue">⭐</div><div class="agent-text"><h4>Lead Scoring Agent</h4><p>Scores and prioritizes inbound leads</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>95</strong><span>94% success</span></div>
+                        <div class="time">12 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="33">⋮</button><div class="action-menu" id="menu-33"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-blue">Sales Agents</span></div>
+                        <div class="subtask">Lead management & outreach</div>
+                        <div class="agent-info"><div class="icon-box blue">📈</div><div class="agent-text"><h4>Sales Follow-up Agent</h4><p>Handles leads and follow-ups</p></div></div>
+                        <div><span class="status"><span class="dot dot-yellow"></span> PAUSED</span></div>
+                        <div class="runs"><strong>32</strong><span>96% success</span></div>
+                        <div class="time">3 hours ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="34">⋮</button><div class="action-menu" id="menu-34"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-blue">Sales Agents</span></div>
+                        <div class="subtask">Sales strategy & analytics</div>
+                        <div class="agent-info"><div class="icon-box blue">🗺️</div><div class="agent-text"><h4>Territory Mapping Agent</h4><p>Maps sales territories and coverage</p></div></div>
+                        <div><span class="status"><span class="dot dot-yellow"></span> PAUSED</span></div>
+                        <div class="runs"><strong>14</strong><span>93% success</span></div>
+                        <div class="time">1 week ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="35">⋮</button><div class="action-menu" id="menu-35"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+
+                    <!-- ══════ OTHER AGENTS ══════ -->
+                    <div class="grid-row">
+                        <div><span class="tag tag-gray">Other Agents</span></div>
+                        <div class="subtask">Data extraction & processing</div>
+                        <div class="agent-info"><div class="icon-box gray">🔠</div><div class="agent-text"><h4>Document Processing Agent</h4><p>Extracts and processes documents</p></div></div>
+                        <div><span class="status"><span class="dot dot-blue"></span> DRAFT</span></div>
+                        <div class="runs"><strong>0</strong><span>-</span></div>
+                        <div class="time">-</div>
+                        <div class="actions"><button class="action-btn">✎</button><button class="action-btn menu-btn" data-menu="36">⋮</button><div class="action-menu" id="menu-36"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-gray">Other Agents</span></div>
+                        <div class="subtask">Data extraction & processing</div>
+                        <div class="agent-info"><div class="icon-box gray">📸</div><div class="agent-text"><h4>OCR Scanning Agent</h4><p>Scans and digitizes printed documents</p></div></div>
+                        <div><span class="status"><span class="dot dot-blue"></span> DRAFT</span></div>
+                        <div class="runs"><strong>0</strong><span>-</span></div>
+                        <div class="time">-</div>
+                        <div class="actions"><button class="action-btn">✎</button><button class="action-btn menu-btn" data-menu="37">⋮</button><div class="action-menu" id="menu-37"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-gray">Other Agents</span></div>
+                        <div class="subtask">Productivity & collaboration</div>
+                        <div class="agent-info"><div class="icon-box gray">📖</div><div class="agent-text"><h4>Knowledge Base Agent</h4><p>Maintains and searches internal wiki</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>210</strong><span>97% success</span></div>
+                        <div class="time">3 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="38">⋮</button><div class="action-menu" id="menu-38"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-gray">Other Agents</span></div>
+                        <div class="subtask">Productivity & collaboration</div>
+                        <div class="agent-info"><div class="icon-box gray">🗒️</div><div class="agent-text"><h4>Meeting Summary Agent</h4><p>Summarizes meetings & action items</p></div></div>
+                        <div><span class="status"><span class="dot dot-green"></span> ACTIVE</span></div>
+                        <div class="runs"><strong>58</strong><span>100% success</span></div>
+                        <div class="time">1 hour ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="39">⋮</button><div class="action-menu" id="menu-39"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
+                    </div>
+                    <div class="grid-row">
+                        <div><span class="tag tag-gray">Other Agents</span></div>
+                        <div class="subtask">System notifications & alerts</div>
+                        <div class="agent-info"><div class="icon-box gray">🔔</div><div class="agent-text"><h4>Notification Dispatcher Agent</h4><p>Routes alerts via SMS, email, Slack</p></div></div>
+                        <div><span class="status"><span class="dot dot-red"></span> ERROR</span></div>
+                        <div class="runs"><strong>143</strong><span>91% success</span></div>
+                        <div class="time">18 min ago</div>
+                        <div class="actions"><button class="action-btn">▶</button><button class="action-btn menu-btn" data-menu="40">⋮</button><div class="action-menu" id="menu-40"><button class="action-menu-item">Execute</button><button class="action-menu-item">Modify</button><button class="action-menu-item delete">Delete</button></div></div>
                     </div>
 
                 </div>
 
                 <footer class="pagination-footer">
-                    <div class="showing-text">Showing 1 to 7 of 12 agents</div>
+                    <div class="showing-text">Showing 1 to 40 of 40 agents</div>
                     <div class="pagination-controls">
                         <button class="page-btn"><</button>
                         <button class="page-btn active">1</button>
-                        <button class="page-btn">2</button>
                         <button class="page-btn">></button>
                     </div>
                 </footer>
@@ -808,83 +601,34 @@
     </main>
 
     <script>
-        // Category Filter Functionality
         const sidebarItems = document.querySelectorAll('.sidebar-item');
         const gridRows = document.querySelectorAll('.grid-row');
-
         sidebarItems.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
-
-                // Update active state in sidebar
                 sidebarItems.forEach(i => i.classList.remove('active'));
                 item.classList.add('active');
-
-                // Get the category text (remove checkmark and whitespace)
                 let categoryText = item.innerText.replace('✓', '').trim();
-
-                // Filter rows based on category
                 gridRows.forEach(row => {
-                    // Find the category tag in the row (second column)
                     const categoryTag = row.querySelector('span.tag');
-                    
-                    if (categoryText === 'All Categories') {
-                        // Show all rows
-                        row.style.display = 'grid';
-                    } else if (categoryTag) {
-                        const tagText = categoryTag.textContent.trim();
-                        // Show only matching category rows
-                        if (tagText === categoryText) {
-                            row.style.display = 'grid';
-                        } else {
-                            row.style.display = 'none';
-                        }
-                    } else {
-                        // Hide rows without category tag if filtering by specific category
-                        row.style.display = 'none';
-                    }
+                    if (categoryText === 'All Categories') { row.style.display = 'grid'; }
+                    else if (categoryTag && categoryTag.textContent.trim() === categoryText) { row.style.display = 'grid'; }
+                    else { row.style.display = 'none'; }
                 });
             });
         });
-
-        // Action Menu Popup Functionality
         const menuButtons = document.querySelectorAll('.menu-btn');
-
         menuButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const menuId = btn.getAttribute('data-menu');
-                const menu = document.getElementById(`menu-${menuId}`);
-
-                // Close all other menus
-                document.querySelectorAll('.action-menu').forEach(m => {
-                    if (m !== menu) {
-                        m.classList.remove('show');
-                    }
-                });
-
-                // Toggle current menu
+                const menu = document.getElementById('menu-' + btn.getAttribute('data-menu'));
+                document.querySelectorAll('.action-menu').forEach(m => { if (m !== menu) m.classList.remove('show'); });
                 menu.classList.toggle('show');
             });
         });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', () => {
-            document.querySelectorAll('.action-menu').forEach(menu => {
-                menu.classList.remove('show');
-            });
-        });
-
-        // Menu item click handlers
-        const menuItems = document.querySelectorAll('.action-menu-item');
-        menuItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const action = item.textContent.trim();
-                console.log(`Action: ${action}`);
-                // Close the menu after selection
-                item.closest('.action-menu').classList.remove('show');
-            });
+        document.addEventListener('click', () => { document.querySelectorAll('.action-menu').forEach(m => m.classList.remove('show')); });
+        document.querySelectorAll('.action-menu-item').forEach(item => {
+            item.addEventListener('click', (e) => { e.stopPropagation(); console.log('Action: ' + item.textContent.trim()); item.closest('.action-menu').classList.remove('show'); });
         });
     </script>
 </body>
